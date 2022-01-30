@@ -29,7 +29,6 @@ app.use(session({
   saveUninitialized: true, // Save a session that is new, but has not been modified
   cookie: {maxAge: 10*60*1000 } // milliseconds!
 }));
-app.use(session({
 
 app.use(express.static('public'));
 app.use('/access-mars/api', accessMarsRouter);
