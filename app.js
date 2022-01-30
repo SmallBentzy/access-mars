@@ -22,11 +22,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
+  store: new RedisStore(),
+  
   secret:"somesecretkey",
   resave: false, // Force save of session for each request
-  saveUninitialized: false, // Save a session that is new, but has not been modified
+  saveUninitialized: true, // Save a session that is new, but has not been modified
   cookie: {maxAge: 10*60*1000 } // milliseconds!
 }));
+app.use(session({
 
 app.use(express.static('public'));
 app.use('/access-mars/api', accessMarsRouter);
