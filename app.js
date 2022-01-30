@@ -6,8 +6,6 @@ var logger = require('morgan');
 const session = require('express-session');
 var indexRouter = require('./routes/index.js');
 var accessMarsRouter = require('./routes/acces-marsRouts.js');
-app.set('trust proxy', 1);
-
 var app = express();
 
 const sequelize = require('sequelize');
@@ -22,9 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-  store: new RedisStore(),
-  
+app.use(session({  
   secret:"somesecretkey",
   resave: false, // Force save of session for each request
   saveUninitialized: true, // Save a session that is new, but has not been modified
