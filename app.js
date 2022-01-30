@@ -6,6 +6,7 @@ var logger = require('morgan');
 const session = require('express-session');
 var indexRouter = require('./routes/index.js');
 var accessMarsRouter = require('./routes/acces-marsRouts.js');
+app.set('trust proxy', 1);
 
 var app = express();
 
